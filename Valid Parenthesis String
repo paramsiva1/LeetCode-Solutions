@@ -1,0 +1,51 @@
+class Solution {
+    public boolean checkValidString(String s) {
+        Stack<Integer> st = new Stack<Integer>();
+        Stack<Integer> op = new Stack<Integer>();
+        
+        for(int i = 0; i < s.length(); i++)
+        {
+            if(s.charAt(i) == '*')
+            {
+                st.push(i);
+            }
+            else if(s.charAt(i) == '(')
+            {
+                op.push(i);
+            }
+            else
+            {
+                if(!op.isEmpty())
+                {
+                    op.pop();
+                    continue;
+                }
+                else
+                {
+                    if(!st.isEmpty())
+                    {
+                        st.pop();
+                        continue;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }            
+        }
+        
+        while(!op.isEmpty())
+        {
+            if(st.isEmpty())
+                return false;
+            else
+            {
+                if(op.pop() > st.pop())
+                    return false;          
+            }
+        }
+        return true;
+        
+    }
+}
