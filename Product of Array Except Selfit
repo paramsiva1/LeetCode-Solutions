@@ -1,0 +1,26 @@
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+    // output array stores the result
+        int[] output = new int[nums.length];
+        int product = 1;
+    
+    //Store the left to right cumulative product 
+        for(int i = 0; i < nums.length; i++)
+        {
+            output[i] = product;
+            product = product * nums[i];
+        }
+        
+        product = 1;
+     //product - store the right to left cumulative product and multiply the both
+     //right to left and left to right cumulative product store in the output result.
+        for(int i = nums.length-1; i >= 0; i--)
+        {
+            output[i] *= product;
+            product *= nums[i];
+        }
+        
+        return output;
+        
+    }
+}
