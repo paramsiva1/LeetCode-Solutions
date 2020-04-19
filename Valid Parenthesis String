@@ -1,5 +1,7 @@
 class Solution {
     public boolean checkValidString(String s) {
+    //st - stack stores star character index
+    //op - stack stores open parenthesis index
         Stack<Integer> st = new Stack<Integer>();
         Stack<Integer> op = new Stack<Integer>();
         
